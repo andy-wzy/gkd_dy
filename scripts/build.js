@@ -1,10 +1,18 @@
 import fs from "fs";
 import JSON5 from "json5";
 
-const files = [
-  "upstream/ganlin.json5",
-  "upstream/mrlc.json5"
-];
+const sourceConfig = JSON.parse(
+  fs.readFileSync(
+    "config/sources.json",
+    "utf8"
+  )
+);
+
+const files =
+  sourceConfig.sources.map(
+    source =>
+      `upstream/${source.name}.json5`
+  );
 
 // 规则名称统一
 const groupNameMap = {
@@ -141,7 +149,73 @@ fs.writeFileSync(
     2
   )
 );
+const report = {
+  generatedAt: new Date().toISOString(),
 
+  sourceApps: sourceAppCount,
+
+  sourceGroups: sourceGroupCount,
+
+  finalApps: apps.length,
+
+  finalGroups: finalGroupCount,
+
+  removedGroups:
+    sourceGroupCount - finalGroupCount,
+
+  dedupRate:
+    (
+      (
+        sourceGroupCount -
+        finalGroupCount
+      ) /
+      sourceGroupCount *
+      100
+    ).toFixed(2) + "%"
+};
+
+if (!fs.existsSync("reports")) {
+  fs.mkdirSync("reports");
+}
+
+fs.writeFileSync(
+  "reports/statistics.json",
+  JSON.stringify(
+    report,
+    null,
+    2
+  )
+);
+const stableApps = apps.map(app => {
+  return {
+    ...app,
+
+    groups: (app.groups || []).filter(
+      group =>
+        !(
+          group.name?.includes("测试") ||
+          group.name?.includes("实验")
+        )
+    )
+  };
+});
+
+fs.writeFileSync(
+  "dist/my-gkd-stable.json",
+  JSON.stringify(
+    {
+      ...output,
+
+      id: "gkd-dy-stable",
+
+      name: "GKD DY Stable",
+
+      apps: stableApps
+    },
+    null,
+    2
+  )
+);
 console.log("========== BUILD REPORT ==========");
 console.log(`Source Apps   : ${sourceAppCount}`);
 console.log(`Source Groups : ${sourceGroupCount}`);
