@@ -1,9 +1,14 @@
 {
   "name": "gkd_dy",
   "version": "1.0.0",
-   "type": "module",
+  "type": "module",
+
   "scripts": {
     "sync": "node scripts/sync.js",
     "build": "node scripts/build.js"
+  },
+
+  "dependencies": {
+    "json5": "^2.2.3"
   }
 }
