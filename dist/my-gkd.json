@@ -3,7 +3,8 @@
   "name": "GKD DY",
   "version": 1,
   "author": "andy-wzy",
-  "generatedAt": "2026-06-01T17:17:26.352Z",
+  "generatedAt": "2026-06-01T17:31:17.107Z",
+  "updateUrl": "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json",
   "apps": [
     {
       "id": "tv.acfundanmaku.video",
@@ -613,6 +614,18 @@
               "snapshotUrls": "https://i.gkd.li/i/19958881"
             }
           ],
+          "enable": false
+        },
+        {
+          "key": 5,
+          "name": "评价提示-评论区满意度评价",
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "fastQuery": true,
+          "activityIds": "com.bilibili.video.story.StoryVideoActivity",
+          "rules": "[text=\"对当前的评论区满意吗？\"] + [id=\"com.bilibili.app.in:id/close\"]",
+          "snapshotUrls": "https://i.gkd.li/i/13115189",
           "enable": false
         },
         {
@@ -6639,6 +6652,15 @@
           ]
         },
         {
+          "key": 2,
+          "name": "局部广告-打车界面右侧悬浮球",
+          "fastQuery": true,
+          "activityIds": "com.baidu.baidumaps.MapsActivity",
+          "rules": "RelativeLayout[id=\"com.baidu.BaiduMap:id/rl_close_content\"]",
+          "snapshotUrls": "https://i.gkd.li/i/12642307",
+          "enable": false
+        },
+        {
           "key": 5,
           "name": "权限提示-定位权限",
           "fastQuery": true,
@@ -6665,6 +6687,21 @@
               "matches": "ImageView[id=\"com.baidu.BaiduMap:id/location_dialog_close_iv\"]",
               "snapshotUrls": "https://i.gkd.li/i/12909299"
             }
+          ],
+          "enable": false
+        },
+        {
+          "key": 6,
+          "name": "全屏广告-打车界面弹窗广告",
+          "fastQuery": true,
+          "activityIds": [
+            "com.baidu.baidumaps.MapsActivity",
+            "com.android.packageinstaller.permission.ui.GrantPermissionsActivity"
+          ],
+          "rules": "ImageView[id=\"com.baidu.BaiduMap:id/operational_activities_content_close\"]",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/12909300",
+            "https://i.gkd.li/i/12930699"
           ],
           "enable": false
         },
@@ -7891,6 +7928,14 @@
           "activityIds": "com.boohee.one.app.account.ui.activity.MsgCategoryActivityV2",
           "rules": "[id=\"com.boohee.one:id/img_close_push\"]",
           "snapshotUrls": "https://i.gkd.li/import/12716950"
+        },
+        {
+          "key": 2,
+          "name": "全屏广告-发现页弹窗广告",
+          "activityIds": "com.sensorsdata.sf.ui.view.DialogActivity",
+          "rules": "LinearLayout[childCount=2] > @ImageView[id=null][clickable=true] + ImageView",
+          "snapshotUrls": "https://i.gkd.li/i/12716970",
+          "enable": false
         },
         {
           "key": 10,
@@ -16260,6 +16305,32 @@
           "enable": false
         },
         {
+          "key": 11,
+          "name": "局部广告-首页签到卡片",
+          "desc": "点击\"x\"",
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "activityIds": "com.autonavi.map.activity.NewMapActivity",
+          "rules": "ImageView[visibleToUser=true][width<90][height<90] < @ViewGroup -(2) ViewGroup > ViewGroup > View[text*=\"签到\"||text*=\"成长值\"]",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/12642842",
+            "https://i.gkd.li/i/12642845",
+            "https://i.gkd.li/i/12818770",
+            "https://i.gkd.li/i/13764540"
+          ],
+          "enable": false
+        },
+        {
+          "key": 12,
+          "name": "全屏广告-加油页面优惠券弹窗",
+          "activityIds": "com.autonavi.map.activity.NewMapActivity",
+          "rules": "@ImageView < [desc=\"关闭\"][clickable=true] - ViewGroup > ViewGroup > ViewGroup > View[text=\"立即领取\"]",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/12642857"
+          ],
+          "enable": false
+        },
+        {
           "key": 13,
           "name": "局部广告-卡片广告",
           "desc": "点击关闭",
@@ -19134,6 +19205,16 @@
           "enable": false
         },
         {
+          "key": 1,
+          "name": "全屏广告-VIP弹窗广告",
+          "desc": "点击底部圆形x图标关闭弹窗",
+          "activityIds": "com.android.mediacenter.MainActivity",
+          "fastQuery": true,
+          "rules": "[id=\"com.android.mediacenter:id/iv_close\"]",
+          "snapshotUrls": "https://i.gkd.li/i/12914026",
+          "enable": false
+        },
+        {
           "key": 2,
           "name": "局部广告-推荐卡片广告",
           "desc": "点击卡片右上角[广告],点击不感兴趣[直接关闭]",
@@ -21316,6 +21397,15 @@
           "enable": false
         },
         {
+          "key": 11,
+          "name": "局部广告-支付页面产品推荐",
+          "desc": "自动点击右上角\"x\"",
+          "activityIds": "com.jd.lib.settlement.fillorder.activity.NewFillOrderActivity",
+          "rules": "ImageView[clickable=true && desc=\"关闭\"]",
+          "snapshotUrls": "https://i.gkd.li/i/13191146",
+          "enable": false
+        },
+        {
           "key": 12,
           "name": "全屏广告-购物车页面支付成功弹窗广告",
           "desc": "自动点击正下方的\"x\"",
@@ -22912,6 +23002,14 @@
           "activityIds": "com.kuaikan.comic.infinitecomic.view.ComicInfiniteActivity",
           "rules": "[id=\"com.kuaikan.comic:id/adBannerClose\"]",
           "snapshotUrls": "https://i.gkd.li/import/12910268",
+          "enable": false
+        },
+        {
+          "key": 2,
+          "name": "局部广告-漫画界面底部弹窗广告",
+          "activityIds": "com.kuaikan.comic.infinitecomic.view.ComicInfiniteActivity",
+          "rules": "[id=\"com.kuaikan.comic:id/adBannerClose\"]",
+          "snapshotUrls": "https://i.gkd.li/i/12910268",
           "enable": false
         }
       ]
@@ -30003,6 +30101,15 @@
           "rules": "TextView[text=\"立即更新\"] -2 [id=\"com.hihonor.magichome:id/negative_btn\"][text=\"以后再说\"]",
           "snapshotUrls": "https://i.gkd.li/import/12916700",
           "enable": false
+        },
+        {
+          "key": 11,
+          "name": "其他-推荐服务声明",
+          "desc": "推荐服务声明弹窗。默认点击\"取消\"按钮",
+          "activityIds": "com.hihonor.magichome.business.MainActivity",
+          "rules": "[text$=\"推荐服务声明\"] < LinearLayout < LinearLayout + LinearLayout > [id=\"com.hihonor.magichome:id/negative_btn\"]",
+          "snapshotUrls": "https://i.gkd.li/i/12843976",
+          "enable": false
         }
       ]
     },
@@ -31380,6 +31487,21 @@
           "snapshotUrls": [
             "https://i.gkd.li/import/12606861",
             "https://i.gkd.li/import/12606862"
+          ],
+          "enable": false
+        },
+        {
+          "key": 0,
+          "name": "局部广告-顶部卡片广告",
+          "desc": "点击卡片右上角关闭按钮",
+          "activityIds": [
+            "com.jim.qrcode.MainActivity",
+            "com.miui.home.launcher.Launcher"
+          ],
+          "rules": "TextView[text.length>0] < FrameLayout + FrameLayout > ImageView",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/12606861",
+            "https://i.gkd.li/i/12606862"
           ],
           "enable": false
         }
@@ -47790,6 +47912,23 @@
           "snapshotUrls": [
             "https://i.gkd.li/import/12647068"
           ]
+        },
+        {
+          "key": 2,
+          "name": "全屏广告-首页弹窗广告",
+          "fastQuery": true,
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "activityIds": [
+            "com.cmbchina.ccd.pluto.cmbActivity.CMBRootActivityV2"
+          ],
+          "rules": "[id=\"com.cmbchina.ccd.pluto.cmbActivity:id/lly_pop_shell\"] > [id=\"com.cmbchina.ccd.pluto.cmbActivity:id/img_cf_view_close\"]",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/12647000",
+            "https://i.gkd.li/i/13360282"
+          ],
+          "enable": false
         },
         {
           "key": 3,
