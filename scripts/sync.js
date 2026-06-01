@@ -1,5 +1,4 @@
 import fs from "fs";
-import axios from "axios";
 
 const config = JSON.parse(
   fs.readFileSync("config/sources.json", "utf8")
@@ -8,12 +7,23 @@ const config = JSON.parse(
 for (const source of config.sources) {
   console.log(`Downloading ${source.name}...`);
 
-  const res = await axios.get(source.url);
+  const response = await fetch(source.url);
+
+  if (!response.ok) {
+    throw new Error(
+      `Failed to download ${source.name}: ${response.status}`
+    );
+  }
+
+  const content = await response.text();
 
   fs.writeFileSync(
     `upstream/${source.name}.json5`,
-    res.data
+    content,
+    "utf8"
   );
 
   console.log(`Saved ${source.name}`);
 }
+
+console.log("All subscriptions downloaded.");
