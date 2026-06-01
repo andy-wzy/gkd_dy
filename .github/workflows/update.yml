@@ -31,37 +31,4 @@ jobs:
 
           git commit -m "auto update" || true
 
-          git pushname: Update Subscription
-
-on:
-  workflow_dispatch:
-
-  schedule:
-    - cron: "0 0 * * *"
-
-jobs:
-  build:
-    runs-on: ubuntu-latest
-
-    steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - run: npm install
-
-      - run: npm run sync
-
-      - run: npm run build
-
-      - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
-
-          git add .
-
-          git commit -m "auto update" || true
-
           git push
