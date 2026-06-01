@@ -11,24 +11,42 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - uses: actions/checkout@v4
+      # 拉取仓库代码
+      - uses: actions/checkout@v5
 
-      - uses: actions/setup-node@v4
+      # 安装 Node 环境
+      - uses: actions/setup-node@v5
         with:
           node-version: 22
+          cache: npm
 
-      - run: npm install
+      # 安装依赖
+      - name: Install dependencies
+        run: npm install
 
-      - run: npm run sync
+      # 同步订阅源
+      - name: Sync upstream sources
+        run: npm run sync
 
-      - run: npm run build
+      # 构建 + 去重 + 统一名称 + 输出订阅
+      - name: Build subscription
+        run: npm run build
 
-      - run: |
-          git config user.name github-actions
-          git config user.email github-actions@github.com
+      # 输出统计信息（关键）
+      - name: Show statistics
+        run: |
+          echo "===== BUILD REPORT ====="
+          cat reports/statistics.json || echo "no report found"
+          echo "========================"
+
+      # 提交更新到仓库
+      - name: Commit changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .
 
-          git commit -m "auto update" || true
+          git commit -m "auto update subscription" || echo "no changes"
 
           git push
