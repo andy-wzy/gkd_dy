@@ -1,1 +1,9 @@
-
+{
+  "generatedAt": "2026-06-01T17:58:36.946Z",
+  "sourceApps": 1302,
+  "sourceGroups": 2893,
+  "finalApps": 807,
+  "finalGroups": 2878,
+  "removedGroups": 15,
+  "dedupRate": "0.52%"
+}
