@@ -1,0 +1,9 @@
+{
+  "name": "gkd_dy",
+  "version": "1.0.0",
+   "type": "module",
+  "scripts": {
+    "sync": "node scripts/sync.js",
+    "build": "node scripts/build.js"
+  }
+}

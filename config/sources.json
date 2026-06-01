@@ -1,0 +1,14 @@
+{
+  "sources": [
+    {
+      "name": "ganlin",
+      "priority": 100,
+      "url": "https://raw.githubusercontent.com/ganlinte/GKD-subscription/main/dist/ganlin_gkd.json5"
+    },
+    {
+      "name": "mrlc",
+      "priority": 90,
+      "url": "https://raw.githubusercontent.com/mrlctate/gkd-mrlc/main/dist/gkd.json5"
+    }
+  ]
+}
