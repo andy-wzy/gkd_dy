@@ -142,7 +142,7 @@ if (!fs.existsSync("dist")) {
 }
 
 fs.writeFileSync(
-  "dist/my-gkd.json",
+  "dist/my-gkd.json5",
   JSON.stringify(
     output,
     null,
@@ -201,7 +201,7 @@ const stableApps = apps.map(app => {
 });
 
 fs.writeFileSync(
-  "dist/my-gkd-stable.json",
+  "dist/my-gkd-stable.json5",
   JSON.stringify(
     {
       ...output,
