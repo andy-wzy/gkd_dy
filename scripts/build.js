@@ -12,6 +12,31 @@ const files = sourceConfig.sources.map(
   source => `upstream/${source.name}.json5`
 );
 
+const versionFile =
+  "config/version.json";
+
+const versionData =
+  JSON.parse(
+    fs.readFileSync(
+      versionFile,
+      "utf8"
+    )
+  );
+
+versionData.version += 1;
+
+fs.writeFileSync(
+  versionFile,
+  JSON.stringify(
+    versionData,
+    null,
+    2
+  )
+);
+
+const version =
+  versionData.version;
+
 // =======================
 // 规则组名称统一映射
 // =======================
@@ -112,19 +137,23 @@ const report = {
 // =======================
 // 输出完整订阅
 // =======================
+
 const output = {
-  id: 10001, // 顶层 id 为数字
-  name: "GKD DY Quality",
+  id: "10001",
+
+  name: "GKD DY",
+
   version: 1,
+
   author: "andy-wzy",
+
   generatedAt: new Date().toISOString(),
-  updateUrl:
-    "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json",
+
   apps
 };
-
 if (!fs.existsSync("dist")) fs.mkdirSync("dist");
 fs.writeFileSync("dist/my-gkd.json", JSON.stringify(output, null, 2));
+
 
 // =======================
 // 输出稳定版订阅
@@ -141,8 +170,8 @@ fs.writeFileSync(
   JSON.stringify(
     {
       ...output,
-      id: 10001, // 稳定版也使用数字 id
-      name: "GKD DY Stable",
+      id: "10002", // 稳定版也使用 id
+      name: "GKD DY2 Stable",
       apps: stableApps
     },
     null,
