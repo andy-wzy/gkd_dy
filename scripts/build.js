@@ -121,7 +121,7 @@ for (const app of apps) {
 }
 
 const output = {
-  id: "gkd-dy",
+  id: "10001",
 
   name: "GKD DY",
 
