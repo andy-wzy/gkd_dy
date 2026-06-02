@@ -1,10 +1,9 @@
 {
-  "id": 10001,
-  "name": "GKD DY Stable",
-  "version": 1,
+  "id": "10002",
+  "name": "GKD DY2 Stable",
+  "version": 2,
   "author": "andy-wzy",
-  "generatedAt": "2026-06-02T08:05:29.899Z",
-  "updateUrl": "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json",
+  "generatedAt": "2026-06-02T08:30:35.655Z",
   "apps": [
     {
       "id": "tv.acfundanmaku.video",
