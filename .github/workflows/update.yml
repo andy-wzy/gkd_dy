@@ -2,20 +2,24 @@ name: Update Subscription
 
 on:
   workflow_dispatch:
+
   schedule:
-    - cron: "0 0 * * *"
+    # GitHub Actions 不支持 "每20天"
+    # 这里设置为每月 1 日和 21 日执行
+    - cron: "0 0 1,21 * *"
 
 jobs:
   build:
     runs-on: ubuntu-latest
 
-    steps:
-      # 拉取仓库代码，完整历史以便 rebase
-      - uses: actions/checkout@v5
-        with:
-          fetch-depth: 0
+    permissions:
+      contents: write
 
-      # 安装 Node 环境
+    steps:
+      # 拉取仓库
+      - uses: actions/checkout@v5
+
+      # Node 环境
       - uses: actions/setup-node@v5
         with:
           node-version: 22
@@ -29,29 +33,25 @@ jobs:
       - name: Sync upstream sources
         run: npm run sync
 
-      # 构建 + 去重 + 统一名称 + 输出订阅
+      # 构建订阅
       - name: Build subscription
         run: npm run build
 
-      # 输出统计信息（关键）
+      # 输出统计信息
       - name: Show statistics
         run: |
-          echo "===== BUILD REPORT ====="
-          cat reports/statistics.json || echo "no report found"
-          echo "========================"
+          echo "========== BUILD REPORT =========="
+          cat reports/statistics.json || echo "statistics not found"
+          echo "=================================="
 
-      # 提交更新到仓库（安全方式）
-      - name: Commit and push changes
+      # 提交变更
+      - name: Commit changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
 
           git add .
-          git commit -m "auto update subscription" || echo "no changes"
 
-          # 先拉取远程最新提交并 rebase
-          git fetch origin main
-          git rebase origin/main || git rebase --abort
+          git diff --staged --quiet || git commit -m "auto update subscription"
 
-          # 推送到远程
-          git push origin main
+          git push
