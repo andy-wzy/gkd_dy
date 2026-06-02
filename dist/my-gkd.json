@@ -1,9 +1,9 @@
 {
-  "id": "gkd-dy",
-  "name": "GKD DY",
+  "id": 10001,
+  "name": "GKD DY Quality",
   "version": 1,
   "author": "andy-wzy",
-  "generatedAt": "2026-06-02T03:29:23.256Z",
+  "generatedAt": "2026-06-02T07:43:13.851Z",
   "updateUrl": "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json",
   "apps": [
     {
