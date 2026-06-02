@@ -1,7 +1,9 @@
 import fs from "fs";
 import JSON5 from "json5";
 
+// =======================
 // 读取 sources.json
+// =======================
 const sourceConfig = JSON.parse(
   fs.readFileSync("config/sources.json", "utf8")
 );
@@ -10,7 +12,9 @@ const files = sourceConfig.sources.map(
   source => `upstream/${source.name}.json5`
 );
 
-// 规则名称统一映射
+// =======================
+// 规则组名称统一映射
+// =======================
 const groupNameMap = {
   "启动广告": "开屏广告",
   "Splash广告": "开屏广告",
@@ -34,8 +38,10 @@ function makeGroupKey(group) {
   });
 }
 
+// =======================
+// 合并 Apps + 去重
+// =======================
 const appMap = new Map();
-
 let sourceAppCount = 0;
 let sourceGroupCount = 0;
 
@@ -85,9 +91,10 @@ for (const file of files) {
   }
 }
 
-const apps = [...appMap.values()];
-
+// =======================
 // 统计信息
+// =======================
+const apps = [...appMap.values()];
 let finalGroupCount = 0;
 for (const app of apps) finalGroupCount += (app.groups || []).length;
 
@@ -98,28 +105,30 @@ const report = {
   finalApps: apps.length,
   finalGroups: finalGroupCount,
   removedGroups: sourceGroupCount - finalGroupCount,
-  dedupRate: ((sourceGroupCount - finalGroupCount) / sourceGroupCount * 100).toFixed(2) + "%"
+  dedupRate:
+    ((sourceGroupCount - finalGroupCount) / sourceGroupCount * 100).toFixed(2) + "%"
 };
 
-// 输出 JSON5 格式
+// =======================
+// 输出完整订阅
+// =======================
 const output = {
-  id: 10001, // 顶层id改成数字
+  id: 10001, // 顶层 id 为数字
   name: "GKD DY Quality",
   version: 1,
   author: "andy-wzy",
-  updateUrl: "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json5",
+  generatedAt: new Date().toISOString(),
+  updateUrl:
+    "https://raw.githubusercontent.com/andy-wzy/gkd_dy/main/dist/my-gkd.json",
   apps
 };
 
 if (!fs.existsSync("dist")) fs.mkdirSync("dist");
+fs.writeFileSync("dist/my-gkd.json", JSON.stringify(output, null, 2));
 
-// 输出完整订阅 JSON5
-fs.writeFileSync(
-  "dist/my-gkd.json5",
-  JSON5.stringify(output, null, 2)
-);
-
-// 输出稳定版订阅（去掉测试/实验规则）
+// =======================
+// 输出稳定版订阅
+// =======================
 const stableApps = apps.map(app => ({
   ...app,
   groups: (app.groups || []).filter(
@@ -128,11 +137,11 @@ const stableApps = apps.map(app => ({
 }));
 
 fs.writeFileSync(
-  "dist/my-gkd-stable.json5",
-  JSON5.stringify(
+  "dist/my-gkd-stable.json",
+  JSON.stringify(
     {
       ...output,
-      id: 10002, // 稳定版单独数字id
+      id: 10001, // 稳定版也使用数字 id
       name: "GKD DY Stable",
       apps: stableApps
     },
@@ -141,11 +150,16 @@ fs.writeFileSync(
   )
 );
 
+// =======================
 // 输出统计报告
+// =======================
 if (!fs.existsSync("reports")) fs.mkdirSync("reports");
 fs.writeFileSync("reports/statistics.json", JSON.stringify(report, null, 2));
 
+// =======================
+// 控制台输出
+// =======================
 console.log("========== BUILD REPORT ==========");
 console.log(JSON.stringify(report, null, 2));
 console.log("==================================");
-console.log("Build complete ✅ JSON5 + Quality Analysis");
+console.log("Build complete ✅ JSON + Quality Analysis");
