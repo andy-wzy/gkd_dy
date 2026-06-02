@@ -143,7 +143,7 @@ const output = {
 
   name: "GKD DY",
 
-  version: 1,
+  version: version,
 
   author: "andy-wzy",
 
