@@ -1,9 +1,9 @@
 {
   "id": "10002",
   "name": "GKD DY2 Stable",
-  "version": 2,
+  "version": 3,
   "author": "andy-wzy",
-  "generatedAt": "2026-06-02T08:30:35.655Z",
+  "generatedAt": "2026-06-21T02:39:46.231Z",
   "apps": [
     {
       "id": "tv.acfundanmaku.video",
