@@ -1,9 +1,9 @@
 {
   "id": "10002",
   "name": "GKD DY2 Stable",
-  "version": 3,
+  "version": 4,
   "author": "andy-wzy",
-  "generatedAt": "2026-06-21T02:39:46.231Z",
+  "generatedAt": "2026-07-01T02:30:18.363Z",
   "apps": [
     {
       "id": "tv.acfundanmaku.video",
@@ -18922,6 +18922,105 @@
       ]
     },
     {
+      "id": "com.android.mediacenter",
+      "name": "华为音乐",
+      "groups": [
+        {
+          "key": 0,
+          "name": "开屏广告",
+          "fastQuery": true,
+          "matchTime": 10000,
+          "actionMaximum": 1,
+          "resetMatch": "app",
+          "rules": [
+            {
+              "key": 0,
+              "action": "clickCenter",
+              "matches": "[text^=\"跳过\"][text.length<=10]",
+              "snapshotUrls": [
+                "https://i.gkd.li/import/12901417",
+                "https://i.gkd.li/import/12908742"
+              ],
+              "exampleUrls": [
+                "https://github.com/gkd-kit/inspect/assets/38517192/6c34cd13-cfda-4462-99ed-2a2534a6fdf5",
+                "https://github.com/gkd-kit/inspect/assets/38517192/c71bb14d-cd1f-4f9e-8ee9-6a1e11e56901"
+              ]
+            }
+          ],
+          "order": -10
+        },
+        {
+          "key": 1,
+          "name": "全屏广告-VIP广告弹窗",
+          "desc": "点击底部圆形x图标关闭弹窗",
+          "activityIds": "com.android.mediacenter.MainActivity",
+          "fastQuery": true,
+          "rules": "[id=\"com.android.mediacenter:id/iv_close\"]",
+          "snapshotUrls": "https://i.gkd.li/import/12914026",
+          "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/433dd71c-4fe5-41c9-a2da-dd3ac29f8dd4",
+          "enable": false
+        },
+        {
+          "key": 2,
+          "name": "局部广告-推荐广告卡片",
+          "desc": "点击卡片右上角[广告],点击不感兴趣[直接关闭]",
+          "fastQuery": true,
+          "rules": [
+            {
+              "key": 0,
+              "name": "点击卡片右上角[广告]",
+              "activityIds": "com.android.mediacenter.MainActivity",
+              "matches": "[id=\"com.android.mediacenter:id/ad_more_layout\"]",
+              "snapshotUrls": "https://i.gkd.li/import/12914077",
+              "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/37ee4a9b-2518-41e6-8227-7b204ed1bf61"
+            },
+            {
+              "key": 1,
+              "name": "点击不感兴趣[直接关闭]",
+              "activityIds": "com.huawei.openalliance.ad.activity.FeedbackActivity",
+              "matches": "[id=\"com.android.mediacenter:id/label_title\"][text=\"直接关闭\"]",
+              "snapshotUrls": "https://i.gkd.li/import/12914078",
+              "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/d098a194-80ff-49a1-b80e-191f7574a816"
+            }
+          ],
+          "enable": false
+        },
+        {
+          "key": 1,
+          "name": "全屏广告-VIP弹窗广告",
+          "desc": "点击底部圆形x图标关闭弹窗",
+          "activityIds": "com.android.mediacenter.MainActivity",
+          "fastQuery": true,
+          "rules": "[id=\"com.android.mediacenter:id/iv_close\"]",
+          "snapshotUrls": "https://i.gkd.li/i/12914026",
+          "enable": false
+        },
+        {
+          "key": 2,
+          "name": "局部广告-推荐卡片广告",
+          "desc": "点击卡片右上角[广告],点击不感兴趣[直接关闭]",
+          "fastQuery": true,
+          "rules": [
+            {
+              "key": 0,
+              "name": "点击卡片右上角[广告]",
+              "activityIds": "com.android.mediacenter.MainActivity",
+              "matches": "[id=\"com.android.mediacenter:id/ad_more_layout\"]",
+              "snapshotUrls": "https://i.gkd.li/i/12914077"
+            },
+            {
+              "key": 1,
+              "name": "点击不感兴趣[直接关闭]",
+              "activityIds": "com.huawei.openalliance.ad.activity.FeedbackActivity",
+              "matches": "[id=\"com.android.mediacenter:id/label_title\"][text=\"直接关闭\"]",
+              "snapshotUrls": "https://i.gkd.li/i/12914078"
+            }
+          ],
+          "enable": false
+        }
+      ]
+    },
+    {
       "id": "com.huawei.music",
       "name": "华为音乐",
       "groups": [
@@ -19133,105 +19232,6 @@
               "matches": "[text=\"直接关闭\"][visibleToUser=true]",
               "exampleUrls": "https://e.gkd.li/9c4da3cf-897d-4b4a-bda0-e5e35af19b1d",
               "snapshotUrls": "https://i.gkd.li/i/20745789"
-            }
-          ],
-          "enable": false
-        }
-      ]
-    },
-    {
-      "id": "com.android.mediacenter",
-      "name": "华为音乐",
-      "groups": [
-        {
-          "key": 0,
-          "name": "开屏广告",
-          "fastQuery": true,
-          "matchTime": 10000,
-          "actionMaximum": 1,
-          "resetMatch": "app",
-          "rules": [
-            {
-              "key": 0,
-              "action": "clickCenter",
-              "matches": "[text^=\"跳过\"][text.length<=10]",
-              "snapshotUrls": [
-                "https://i.gkd.li/import/12901417",
-                "https://i.gkd.li/import/12908742"
-              ],
-              "exampleUrls": [
-                "https://github.com/gkd-kit/inspect/assets/38517192/6c34cd13-cfda-4462-99ed-2a2534a6fdf5",
-                "https://github.com/gkd-kit/inspect/assets/38517192/c71bb14d-cd1f-4f9e-8ee9-6a1e11e56901"
-              ]
-            }
-          ],
-          "order": -10
-        },
-        {
-          "key": 1,
-          "name": "全屏广告-VIP广告弹窗",
-          "desc": "点击底部圆形x图标关闭弹窗",
-          "activityIds": "com.android.mediacenter.MainActivity",
-          "fastQuery": true,
-          "rules": "[id=\"com.android.mediacenter:id/iv_close\"]",
-          "snapshotUrls": "https://i.gkd.li/import/12914026",
-          "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/433dd71c-4fe5-41c9-a2da-dd3ac29f8dd4",
-          "enable": false
-        },
-        {
-          "key": 2,
-          "name": "局部广告-推荐广告卡片",
-          "desc": "点击卡片右上角[广告],点击不感兴趣[直接关闭]",
-          "fastQuery": true,
-          "rules": [
-            {
-              "key": 0,
-              "name": "点击卡片右上角[广告]",
-              "activityIds": "com.android.mediacenter.MainActivity",
-              "matches": "[id=\"com.android.mediacenter:id/ad_more_layout\"]",
-              "snapshotUrls": "https://i.gkd.li/import/12914077",
-              "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/37ee4a9b-2518-41e6-8227-7b204ed1bf61"
-            },
-            {
-              "key": 1,
-              "name": "点击不感兴趣[直接关闭]",
-              "activityIds": "com.huawei.openalliance.ad.activity.FeedbackActivity",
-              "matches": "[id=\"com.android.mediacenter:id/label_title\"][text=\"直接关闭\"]",
-              "snapshotUrls": "https://i.gkd.li/import/12914078",
-              "exampleUrls": "https://github.com/gkd-kit/inspect/assets/38517192/d098a194-80ff-49a1-b80e-191f7574a816"
-            }
-          ],
-          "enable": false
-        },
-        {
-          "key": 1,
-          "name": "全屏广告-VIP弹窗广告",
-          "desc": "点击底部圆形x图标关闭弹窗",
-          "activityIds": "com.android.mediacenter.MainActivity",
-          "fastQuery": true,
-          "rules": "[id=\"com.android.mediacenter:id/iv_close\"]",
-          "snapshotUrls": "https://i.gkd.li/i/12914026",
-          "enable": false
-        },
-        {
-          "key": 2,
-          "name": "局部广告-推荐卡片广告",
-          "desc": "点击卡片右上角[广告],点击不感兴趣[直接关闭]",
-          "fastQuery": true,
-          "rules": [
-            {
-              "key": 0,
-              "name": "点击卡片右上角[广告]",
-              "activityIds": "com.android.mediacenter.MainActivity",
-              "matches": "[id=\"com.android.mediacenter:id/ad_more_layout\"]",
-              "snapshotUrls": "https://i.gkd.li/i/12914077"
-            },
-            {
-              "key": 1,
-              "name": "点击不感兴趣[直接关闭]",
-              "activityIds": "com.huawei.openalliance.ad.activity.FeedbackActivity",
-              "matches": "[id=\"com.android.mediacenter:id/label_title\"][text=\"直接关闭\"]",
-              "snapshotUrls": "https://i.gkd.li/i/12914078"
             }
           ],
           "enable": false
@@ -19804,6 +19804,26 @@
                 "https://i.gkd.li/i/12667815"
               ]
             }
+          ],
+          "enable": false
+        }
+      ]
+    },
+    {
+      "id": "com.pandabus.android.jilinxing",
+      "name": "吉林行",
+      "groups": [
+        {
+          "key": 1,
+          "name": "全屏广告-开屏小窗广告",
+          "desc": "检测到开屏穿山甲广告自动关闭",
+          "fastQuery": true,
+          "activityIds": [
+            "com.pandabus.android.jilinxing.MainActivity"
+          ],
+          "rules": "@[vid=\"iv_native_dislike\"]",
+          "snapshotUrls": [
+            "https://i.gkd.li/i/29184757"
           ],
           "enable": false
         }
